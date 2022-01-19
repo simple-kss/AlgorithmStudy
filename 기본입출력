@@ -1,0 +1,47 @@
+package E20210708_2305;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class main {
+	static int[][] arr = new int[301][301];
+
+	public static void main(String[] args) throws IOException {
+		// << 입력부 >>
+		// n행 m열 배열은 입력받는다고 생각해보자.
+		// 받은 후 그대로 출력하기.
+		/*
+4 3
+1 2 3
+3 4 5
+6 7 1
+1 2 3
+		*/
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer stk = new StringTokenizer(br.readLine()," ");  // 읽은 라인을 " "으로 자른다.
+
+		int n = Integer.parseInt(stk.nextToken());
+		int m = Integer.parseInt(stk.nextToken());
+
+		for (int i = 0; i < n; i++) {
+			stk = new StringTokenizer(br.readLine(), " ");
+			for (int j = 0; j < m; j++) {
+				arr[i][j] = Integer.parseInt(stk.nextToken());
+			}			
+		}
+		
+		// << 출력부 >> (테스트하기)
+		StringBuilder sb = new StringBuilder();
+		sb.append("n : " + n + ", m : " + m).append('\n');
+		
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				sb.append(arr[i][j]);
+			}
+			sb.append('\n');
+		}
+		System.out.println(sb);
+	}
+}
