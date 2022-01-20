@@ -1,0 +1,31 @@
+import java.util.Arrays;
+
+class Solution {
+    public int[] solution(int[] array, int[][] commands) {
+        // a, b, c
+        // a부터 b까지 자르고
+        // c번째를 출력
+        int r = commands.length;
+        int[] answer = new int[r];
+        for (int i = 0; i < r; i++ ) {
+        	int start = commands[i][0];
+        	int end = commands[i][1];
+        	int idx = commands[i][2];
+        	
+        	int[] copyOfRange = Arrays.copyOfRange(array, start - 1, end); // start 포함 ~ end 포함
+        	
+        	// sort
+        	for (int k = 0; k < copyOfRange.length - 1; k++) {
+        		for (int l = k + 1; l < copyOfRange.length; l++) {
+        			if (copyOfRange[k] > copyOfRange[l]) {
+        				int temp = copyOfRange[k];
+        				copyOfRange[k] = copyOfRange[l];
+        				copyOfRange[l] = temp;
+        			}
+				}
+			}
+        	answer[i] = copyOfRange[idx - 1];
+        }
+        return answer;
+    }
+}
